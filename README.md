@@ -119,13 +119,11 @@ x0 = int(max(0,child_coor[0] - sigmax + 0.5))
 x1 = int(min(self.width,child_coor[0] + sigmax +0.5))
 y0 = int(max(0,child_coor[1] - sigmay + 0.5))
 y1 = int(min(self.height, child_coor[1] + sigmay + 0.5))
-# print(x0,x1,y0,y1)
-# embed()
+
 start_dep = all_joint_depth[start_id]
 end_dep = all_joint_depth[end_id]
-# tmp_rel_dep.append((end_dep - start_dep) / self.Z) #normalize
 rel_dep = (end_dep - start_dep) / self.Z #normalize
-# embed()
+
 for x in range(x0,x1):
 for y in range(y0,y1):
 dis = np.sqrt((child_coor[0] - x) ** 2 + (child_coor[1] - y) ** 2)
@@ -133,7 +131,7 @@ if dis > 6 or self.rel_demap[ch_index,y,x] != 0:
 continue
 self.rel_demap[ch_index,y,x] = rel_dep
 ch_index += 1 
-# all_rel_depth.append(tmp_rel_dep)
+
 return self.rel_demap
  
 （3）参考了论文SMAP中的网络，写网络
